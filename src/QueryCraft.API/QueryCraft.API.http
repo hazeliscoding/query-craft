@@ -1,0 +1,6 @@
+@QueryCraft.API_HostAddress = http://localhost:5293
+
+GET {{QueryCraft.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
