@@ -1,6 +1,6 @@
 <div class="container mx-auto p-6">
   <div class="bg-gray-800 text-white rounded-lg shadow-lg p-6">
-    <h2 class="text-2xl font-bold text-white-500 mb-4">SQL Query Generator</h2>
+    <h2 class="text-2xl font-bold text-pink-500 mb-4">SQL Query Generator</h2>
 
     <form class="space-y-4">
       <div>
@@ -18,11 +18,18 @@
       </div>
 
       <button type="button" (click)="generateSQL()"
-        class="w-full bg-pink-500 text-white py-3 rounded-md font-medium hover:bg-pink-600 transition duration-200">Generate
-        SQL</button>
+        class="w-full bg-pink-500 text-white py-3 rounded-md font-medium hover:bg-pink-600 transition duration-200">
+        Generate SQL
+      </button>
     </form>
 
-    <div *ngIf="generatedSQL" class="mt-6">
+    <!-- Loading indicator -->
+    <div *ngIf="loading" class="flex justify-center mt-4">
+      <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-8 w-8"></div>
+    </div>
+
+    <!-- Generated SQL -->
+    <div *ngIf="generatedSQL && !loading" class="mt-6">
       <h3 class="text-xl font-semibold text-pink-400 mb-2">Generated SQL</h3>
       <pre class="bg-gray-900 text-white p-4 rounded-md">{{ generatedSQL }}</pre>
     </div>

@@ -18,17 +18,24 @@ export class SqlGeneratorComponent {
   query: string = 'Select all the films an actor starred in';
   schema: string = ``;
   generatedSQL: string | null = null;
-
+  loading: boolean = false; // New loading flag
   constructor(private openaiService: OpenaiService) {}
 
   generateSQL(): void {
     console.log(this.schema);
-    
-    if (this.query) {
+
+    if (this.query && this.schema) {
+      this.loading = true;
       const prompt = `${this.schema}\n\n${this.query}`;
-      this.openaiService.generateSQL(prompt).subscribe((response) => {
-        console.log(response);
-        this.generatedSQL = response.choices[0].message.content;
+      this.openaiService.generateSQL(prompt).subscribe({
+        next: (response) => {
+          this.generatedSQL = response.choices[0].message.content;
+          this.loading = false;
+        },
+        error: (error) => {
+          console.error(error);
+          this.loading = false;
+        },
       });
     }
   }
