@@ -11,7 +11,7 @@
         <input name="query" matInput [(ngModel)]="query" placeholder="Enter your query in plain English">
       </mat-form-field>
 
-      <button mat-raised-button color="primary" (click)="generateSQL()">Generate SQL</button>
+      <button mat-raised-button class="custom-button" (click)="generateSQL()">Generate SQL</button>
     </form>
 
     <mat-card *ngIf="generatedSQL">
