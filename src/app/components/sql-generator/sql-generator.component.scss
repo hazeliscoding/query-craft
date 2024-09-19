@@ -1,0 +1,23 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+mat-card {
+  margin-top: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-card h3 {
+  color: #ff4081;
+}
+
+button {
+  background-color: #ff4081;
+  color: white;
+}

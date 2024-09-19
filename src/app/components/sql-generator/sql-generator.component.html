@@ -1,0 +1,22 @@
+<div class="container">
+  <mat-card>
+    <h2>SQL Query Generator</h2>
+
+    <form class="schema-form">
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Enter schema (e.g., table name, field, field type)"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input name="query" matInput [(ngModel)]="query" placeholder="Enter your query in plain English">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="generateSQL()">Generate SQL</button>
+    </form>
+
+    <mat-card *ngIf="generatedSQL">
+      <h3>Generated SQL</h3>
+      <pre>{{ generatedSQL }}</pre>
+    </mat-card>
+  </mat-card>
+</div>
