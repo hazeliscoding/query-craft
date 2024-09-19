@@ -1,22 +1,30 @@
-<div class="container">
-  <mat-card>
-    <h2>SQL Query Generator</h2>
+<div class="container mx-auto p-6">
+  <div class="bg-gray-800 text-white rounded-lg shadow-lg p-6">
+    <h2 class="text-2xl font-bold text-white-500 mb-4">SQL Query Generator</h2>
 
-    <form class="schema-form">
-      <mat-form-field class="full-width">
-        <textarea matInput placeholder="Enter schema (e.g., table name, field, field type)"></textarea>
-      </mat-form-field>
+    <form class="space-y-4">
+      <div>
+        <label for="schema" class="block text-sm font-medium text-gray-300">Enter schema</label>
+        <textarea id="schema" [(ngModel)]="schema" name="schema"
+          class="w-full p-3 mt-1 text-gray-900 rounded-md bg-gray-200 border border-gray-300 focus:ring-2 focus:ring-pink-500 focus:outline-none"
+          placeholder="e.g., table name, field, field type"></textarea>
+      </div>
 
-      <mat-form-field class="full-width">
-        <input name="query" matInput [(ngModel)]="query" placeholder="Enter your query in plain English">
-      </mat-form-field>
+      <div>
+        <label for="query" class="block text-sm font-medium text-gray-300">Enter your query in plain English</label>
+        <input id="query" name="query" [(ngModel)]="query"
+          class="w-full p-3 mt-1 text-gray-900 rounded-md bg-gray-200 border border-gray-300 focus:ring-2 focus:ring-pink-500 focus:outline-none"
+          placeholder="Enter your query in plain English">
+      </div>
 
-      <button mat-raised-button class="custom-button" (click)="generateSQL()">Generate SQL</button>
+      <button type="button" (click)="generateSQL()"
+        class="w-full bg-pink-500 text-white py-3 rounded-md font-medium hover:bg-pink-600 transition duration-200">Generate
+        SQL</button>
     </form>
 
-    <mat-card *ngIf="generatedSQL">
-      <h3>Generated SQL</h3>
-      <pre>{{ generatedSQL }}</pre>
-    </mat-card>
-  </mat-card>
+    <div *ngIf="generatedSQL" class="mt-6">
+      <h3 class="text-xl font-semibold text-pink-400 mb-2">Generated SQL</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded-md">{{ generatedSQL }}</pre>
+    </div>
+  </div>
 </div>
